@@ -1,0 +1,22 @@
+<svg width="400" height="100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="100" fill="transparent"/>
+  
+  <!-- Dog/Wolf Icon -->
+  <g transform="translate(20, 20)">
+    <path d="M30 25 Q35 15, 40 20 L45 15 Q50 20, 45 25 L50 30 Q45 35, 40 30 L35 35 Q30 30, 35 25 Z" fill="#00a8e8"/>
+    <circle cx="37" cy="25" r="2" fill="white"/>
+    <circle cx="43" cy="25" r="2" fill="white"/>
+    <path d="M35 30 Q40 33, 45 30" stroke="white" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- City Guide 911 FM Text -->
+  <text x="80" y="45" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#00a8e8">
+    City Guide 911 FM
+  </text>
+  
+  <!-- Arema Media Group Subtitle -->
+  <text x="80" y="70" font-family="Arial, sans-serif" font-size="18" font-style="italic" fill="#48cae4">
+    Arema Media Group
+  </text>
+</svg>
