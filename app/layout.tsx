@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -19,6 +20,9 @@ export const metadata: Metadata = {
   description: "Pasang iklan di City Guide 911 FM dengan mudah. Upload file atau teks iklan Anda dan bayar secara online.",
 };
 
+import { AuthProvider } from "@/context/AuthContext";
+import { ToastProvider } from "@/context/ToastContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,19 +31,23 @@ export default function RootLayout({
   return (
     <html lang="id" className="scroll-smooth">
       <head>
-        {/* Midtrans Snap.js */}
-        <script
-          src={process.env.MIDTRANS_ENVIRONMENT === 'production'
+        <Script
+          src={process.env.NEXT_PUBLIC_MIDTRANS_ENV === 'production'
             ? "https://app.midtrans.com/snap/snap.js"
             : "https://app.sandbox.midtrans.com/snap/snap.js"
           }
           data-client-key={process.env.NEXT_PUBLIC_MIDTRANS_CLIENT_KEY}
-        ></script>
+          strategy="beforeInteractive"
+        />
       </head>
-      <body className={`${inter.variable} ${outfit.variable} font-sans antialiased`}>
-        <Header />
-        {children}
-        <Footer />
+      <body suppressHydrationWarning className={`${inter.variable} ${outfit.variable} font-sans antialiased`}>
+        <AuthProvider>
+          <ToastProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ToastProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -37,15 +37,11 @@ export default function SuccessPage() {
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                                <Link href="/">
-                                    <button className="btn btn-primary">
-                                        Kembali ke Beranda
-                                    </button>
+                                <Link href="/" className="btn btn-primary text-center inline-block">
+                                    Kembali ke Beranda
                                 </Link>
-                                <Link href="/order">
-                                    <button className="btn btn-outline">
-                                        Pesan Lagi
-                                    </button>
+                                <Link href="/order" className="btn btn-outline text-center inline-block">
+                                    Pesan Lagi
                                 </Link>
                             </div>
                         </div>

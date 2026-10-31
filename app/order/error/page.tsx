@@ -49,15 +49,11 @@ export default function ErrorPage() {
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                                <Link href="/order">
-                                    <button className="btn btn-primary">
-                                        Coba Lagi
-                                    </button>
+                                <Link href="/order" className="btn btn-primary text-center inline-block">
+                                    Coba Lagi
                                 </Link>
-                                <Link href="/">
-                                    <button className="btn btn-outline">
-                                        Kembali ke Beranda
-                                    </button>
+                                <Link href="/" className="btn btn-outline text-center inline-block">
+                                    Kembali ke Beranda
                                 </Link>
                             </div>
                         </div>

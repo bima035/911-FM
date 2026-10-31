@@ -44,10 +44,8 @@ export default function PendingPage() {
                             </div>
 
                             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                                <Link href="/">
-                                    <button className="btn btn-primary">
-                                        Kembali ke Beranda
-                                    </button>
+                                <Link href="/" className="btn btn-primary text-center inline-block">
+                                    Kembali ke Beranda
                                 </Link>
                             </div>
                         </div>

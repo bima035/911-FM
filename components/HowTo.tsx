@@ -27,7 +27,7 @@ export default function HowTo() {
     ];
 
     return (
-        <section id="cara" className="py-20 bg-gradient-to-b from-[var(--color-light)]/30 to-white">
+        <section id="cara" className="py-20 bg-gradient-to-b from-white to-[var(--color-light)]/30">
             <div className="container">
                 <h2 className="section-title">Cara Memesan Iklan</h2>
                 <p className="section-subtitle">Proses mudah dalam 4 langkah sederhana</p>

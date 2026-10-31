@@ -1,12 +1,24 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useState, useEffect } from 'react';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Hero() {
-    // Generate random values once to avoid hydration mismatch
-    const bubbles = useMemo(() =>
-        Array.from({ length: 20 }, (_, i) => ({
+    const { user } = useAuth();
+    const [bubbles, setBubbles] = useState<{
+        id: number;
+        width: number;
+        height: number;
+        left: number;
+        top: number;
+        opacity: number;
+        duration: number;
+        delay: number;
+    }[]>([]);
+
+    useEffect(() => {
+        const generatedBubbles = Array.from({ length: 20 }, (_, i) => ({
             id: i,
             width: Math.random() * 100 + 50,
             height: Math.random() * 100 + 50,
@@ -15,8 +27,9 @@ export default function Hero() {
             opacity: Math.random() * 0.3,
             duration: Math.random() * 10 + 5,
             delay: Math.random() * 5,
-        }))
-        , []);
+        }));
+        setBubbles(generatedBubbles);
+    }, []);
 
     return (
         <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -44,6 +57,17 @@ export default function Hero() {
             {/* Content */}
             <div className="container relative z-10">
                 <div className="max-w-4xl mx-auto text-center">
+                    {/* Visual Radio */}
+                    <div className="mb-10 aspect-video w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-white animate-fade-in">
+                        <iframe
+                            src="https://player.twitch.tv/?channel=cityguidevisualradio&parent=cityguide911fm.com&parent=localhost"
+                            height="100%"
+                            width="100%"
+                            allowFullScreen
+                            className="w-full h-full"
+                        />
+                    </div>
+
                     <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
                         Pasang Iklan di{' '}
                         <span className="gradient-text">City Guide 911 FM</span>
@@ -51,7 +75,7 @@ export default function Hero() {
                     <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto">
                         Jangkau ribuan pendengar setia City Guide 911 FM. Proses mudah, cepat, dan terpercaya.
                     </p>
-                    <Link href="/order">
+                    <Link href={user ? "/order" : "/login"}>
                         <button className="btn btn-primary btn-large animate-glow">
                             <span>Pasang Iklan Sekarang</span>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
